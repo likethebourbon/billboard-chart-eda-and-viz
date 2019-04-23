@@ -1,6 +1,5 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
 from IPython.display import clear_output
 
 # Load show data
@@ -69,3 +68,4 @@ grouped_df = pd.DataFrame(database.groupby('pair').agg({'Week': 'min', 'Rank': '
 match_df = match_df.join(grouped_df, on='Database_pair', how='left', rsuffix='_db')
 match_df.columns = ['Database_pair', 'Score', 'Show_pair', 'First_week', 'Highest_rank', 'Weeks_on_chart']
 shows.join(match_df.set_index('Show_pair').drop_duplicates(keep='first'), on='pair', how='left').to_csv('all matches 2.csv')
+
