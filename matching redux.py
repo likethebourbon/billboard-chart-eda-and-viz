@@ -70,8 +70,7 @@ i = 1
 for song in shows.pair:
     temp_dict = {}
     temp_dict['Query'] = song
-    match = process.extractBests(str(song), database.pair.unique(
-    ), limit=10, score_cutoff=60, scorer=fuzz.token_sort_ratio)
+    match = process.extractBests(str(song), database.pair.unique(), limit=10, score_cutoff=60, scorer=fuzz.token_sort_ratio)
     for n, result in enumerate(match):
         if result:
             temp_dict[f'Match {n}'] = result[0]
